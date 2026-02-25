@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "A music portfolio/landing page branded 'LNT' at MakeItHappen.com where the owner can upload and remove streaming platform links (Spotify, YouTube, etc.) and new content/songs are instantly visible to visitors when uploaded.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Bold stylized 'LNT' wordmark logo on a transparent background, gold metallic lettering with a dark glow effect (lnt-logo.dim_400x120.png)",
+  "existing_features": [
+    {
+      "id": "feature-build-a-music-catalog-page-that-fetches-all-music-entries-from-the-backend-and-displays-them-in-a-browsable-grid-or-list-each-card-should-show-the-cover-image-title-album-artist-name-release-year-and-genre-if-available",
+      "title": "Build a music catalog page that fetches all music entries from the backend and displays them in a browsable grid or list. Each card should show the cover image, title, album/artist name, release year, and genre if available.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-each-music-card-display-clickable-streaming-platform-buttons-icons-spotify-youtube-apple-music-soundcloud-etc-that-open-the-corresponding-platform-url-in-a-new-browser-tab",
+      "title": "On each music card, display clickable streaming platform buttons/icons (Spotify, YouTube, Apple Music, SoundCloud, etc.) that open the corresponding platform URL in a new browser tab.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-search-or-filter-bar-at-the-top-of-the-music-catalog-page-so-visitors-can-filter-entries-by-title-genre-or-artist-name",
+      "title": "Add a search or filter bar at the top of the music catalog page so visitors can filter entries by title, genre, or artist name.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-music-inspired-visual-theme-with-a-dark-background-vivid-accent-colors-e-g-warm-gold-or-electric-red-strong-typography-and-a-clean-card-based-grid-layout-the-style-should-feel-modern-and-artist-forward-consistent-across-all-sections-of-the-page",
+      "title": "Apply a bold, music-inspired visual theme with a dark background, vivid accent colors (e.g., warm gold or electric red), strong typography, and a clean card-based grid layout. The style should feel modern and artist-forward, consistent across all sections of the page.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-owner-admin-panel-page-route-admin-where-the-owner-can-add-new-music-entries-with-title-artist-album-cover-image-url-release-year-genre-and-streaming-platform-links-and-delete-existing-entries-access-to-this-page-should-be-gated-behind-internet-identity-authentication-only-the-authenticated-owner-can-see-or-use-the-admin-controls",
+      "title": "Create an owner admin panel page (route: /admin) where the owner can add new music entries (with title, artist, album, cover image URL, release year, genre, and streaming platform links) and delete existing entries. Access to this page should be gated behind Internet Identity authentication — only the authenticated owner can see or use the admin controls.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rebrand-the-entire-application-with-the-lnt-identity-throughout-the-design-the-site-title-shown-in-the-browser-tab-hero-banner-header-and-footer-should-read-lnt-and-makeithappen-com-update-the-hero-banner-headline-page-title-in-index-html-and-any-display-text-that-currently-says-music-portfolio-page-to-reflect-the-lnt-brand-keep-the-existing-dark-bold-music-inspired-visual-theme-but-replace-generic-copy-with-lnt-specific-language",
+      "title": "Rebrand the entire application with the 'LNT' identity throughout the design. The site title shown in the browser tab, hero banner, header, and footer should read 'LNT' and 'MakeItHappen.com'. Update the hero banner headline, page title in index.html, and any display text that currently says 'Music Portfolio Page' to reflect the LNT brand. Keep the existing dark, bold, music-inspired visual theme but replace generic copy with LNT-specific language.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-public-music-catalog-page-auto-refreshes-its-data-so-that-when-the-owner-uploads-a-new-song-or-content-via-the-admin-panel-visitors-see-the-new-entry-appear-immediately-without-needing-to-manually-reload-the-page-implement-polling-or-query-invalidation-so-the-catalog-stays-up-to-date-in-real-time",
+      "title": "Ensure the public music catalog page auto-refreshes its data so that when the owner uploads a new song or content via the admin panel, visitors see the new entry appear immediately without needing to manually reload the page. Implement polling or query invalidation so the catalog stays up to date in real time.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-navigation-bar-to-the-application-so-visitors-can-navigate-to-the-public-music-catalog-and-the-owner-can-navigate-to-the-admin-panel-the-nav-should-display-the-lnt-brand-logo-name-on-the-left-a-link-to-the-catalog-music-or-catalog-visible-to-all-users-and-an-admin-link-visible-only-when-authenticated-include-a-login-logout-button-powered-by-internet-identity",
+      "title": "Add a navigation bar to the application so visitors can navigate to the public music catalog and the owner can navigate to the admin panel. The nav should display the LNT brand logo/name on the left, a link to the catalog ('Music' or 'Catalog') visible to all users, and an 'Admin' link visible only when authenticated. Include a login/logout button powered by Internet Identity.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Music listing page displaying the user's tracks/albums",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Links from music entries to external streaming platforms (Spotify, YouTube, etc.)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create a backend data model and actor methods to store and retrieve a catalog of music entries. Each entry should include: title, artist/album name, cover image URL, release year, genre (optional), and a list of streaming platform links (each with a platform name and URL, e.g., Spotify, YouTube, Apple Music, SoundCloud).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Owner admin panel to upload and remove streaming platform links (Spotify, YouTube, etc.)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Real-time/instant visibility of newly uploaded songs and content for visitors",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Page themed with the brand name 'LNT' throughout the design",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Music Portfolio Page",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

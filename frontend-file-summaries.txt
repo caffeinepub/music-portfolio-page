@@ -1,0 +1,16 @@
+{
+  "frontend/src/index.css": "Global styles establishing a dark music-inspired theme with OKLCH color tokens, Bebas Neue display font, Inter body font, gold accent colors, and utility classes for card hover effects and gold glow shadows.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with custom font families (Bebas Neue, Inter), gold color scale, surface colors, platform-specific colors (Spotify, YouTube, Apple Music, etc.), and card/gold shadow tokens.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations — useGetAllEntries (with 10s polling), useAddMusicEntry, useDeleteMusicEntry, useGetCallerUserProfile (with flash-prevention pattern), and useSaveCallerUserProfile.",
+  "frontend/src/components/HeroBanner.tsx": "Full-width hero banner rebranded with \"LNT\" as the giant display headline and \"MakeItHappen.com\" as the tagline, preserving the dark overlay and gold decorative elements.",
+  "frontend/src/components/SearchBar.tsx": "Controlled search input component with a gold-accented border on focus, clear button, and optional result count display below the input.",
+  "frontend/src/components/StreamingPlatformButtons.tsx": "Renders platform-specific styled link buttons for streaming services (Spotify, YouTube, Apple Music, SoundCloud, Tidal, Deezer, Amazon Music, Bandcamp) with brand colors and icons — uses react-icons/si only for confirmed exports (SiSpotify, SiYoutube, SiApplemusic, SiSoundcloud, SiBandcamp) and lucide-react fallbacks for Tidal, Deezer, and Amazon Music.",
+  "frontend/src/components/MusicCard.tsx": "Music entry card displaying cover art with hover zoom, genre badge, title in display font, artist/album/year metadata, and streaming platform buttons at the bottom.",
+  "frontend/src/pages/MusicCatalog.tsx": "Public music catalog page with HeroBanner, SearchBar, and responsive MusicCard grid; footer removed (now in Layout), polling handled by useGetAllEntries.",
+  "frontend/src/App.tsx": "Root app component with TanStack Router setup, two routes (/ for MusicCatalog, /admin for AdminPanel), wrapped in ThemeProvider and QueryClientProvider with a shared Layout via rootRoute.",
+  "frontend/index.html": "HTML entry point with updated page title \"LNT | MakeItHappen.com\".",
+  "frontend/src/components/Navigation.tsx": "Sticky top navigation bar with LNT logo/branding, Music link (always visible), Admin link (authenticated only), and a login/logout button with mobile hamburger menu support.",
+  "frontend/src/components/Layout.tsx": "Shell layout component wrapping Navigation, ProfileSetupModal, main content outlet, and a branded footer with caffeine.ai attribution.",
+  "frontend/src/components/ProfileSetupModal.tsx": "Dialog modal that prompts first-time authenticated users to enter their name, using the flash-prevention pattern to avoid showing before profile data is loaded.",
+  "frontend/src/pages/AdminPanel.tsx": "Owner-only admin panel at /admin with an add-entry form (title, artist, album, cover URL, year, genre, streaming platform links) and a deletable entry list; unauthenticated users see a login prompt."
+}

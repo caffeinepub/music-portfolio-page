@@ -1,0 +1,129 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Owner Admin Panel + LNT Branding for MakeItHappen.com",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "summary": "Create an owner admin panel page at /admin with Internet Identity authentication for adding and deleting music entries",
+      "acceptanceCriteria": [
+        "An /admin route exists and renders the admin panel page",
+        "The page is only accessible when the user is authenticated via Internet Identity",
+        "The admin can fill out a form to add a new music entry with title, artist, album, cover image URL, release year, optional genre, and one or more streaming platform links (platform name + URL)",
+        "Submitting the form calls the backend addMusicEntry method and the new entry appears in the catalog immediately",
+        "Each existing entry in the admin panel has a delete/remove button that calls the backend deleteMusicEntry method and removes the entry",
+        "Unauthenticated users visiting /admin are shown a login prompt and cannot see or modify entries"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminPanel.tsx",
+          "operation": "create",
+          "description": "Create the admin panel page component that displays an add-entry form and a list of existing entries with delete buttons. Guard the entire page content behind authentication: if the user is not authenticated, show a login prompt instead. Use the authorization component's useInternetIdentity hook to check authentication status. The form should collect title, artist, album, cover image URL, release year, optional genre, and multiple streaming platform links (name + URL pairs). On form submission, call the backend addMusicEntry method. Each entry in the list should have a delete button that calls the backend deleteMusicEntry method with the entry ID. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useAddMusicEntry mutation hook that calls actor.addMusicEntry with the form data and invalidates the 'allEntries' query cache on success. Add a useDeleteMusicEntry mutation hook that calls actor.deleteMusicEntry with the entry ID and invalidates the 'allEntries' query cache on success."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace the single MusicCatalog component render with a React Router setup. Add routes for '/' (MusicCatalog) and '/admin' (AdminPanel). Wrap the router in a layout component that includes the navigation bar. Ensure the router is wrapped inside InternetIdentityProvider and QueryClientProvider."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "create",
+          "description": "Create a navigation bar component that displays the LNT brand name on the left, a 'Music' link to the catalog visible to all users, an 'Admin' link visible only when authenticated, and a login/logout button. Use the authorization component's useInternetIdentity hook for authentication state and login/logout actions. The Admin link should navigate to /admin. Reference the generated LNT logo image at frontend/public/assets/generated/lnt-logo.dim_400x120.png for the brand logo. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create a layout component that wraps the Navigation component above the main content area. Use React Router's Outlet component to render child routes. This layout should be applied to all routes in the application."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Create a modal component that prompts first-time authenticated users to enter their name and saves it via the backend saveCallerUserProfile method. Use the authorization component's usage instructions for preventing modal flash on initial load. Show this modal only when the user is authenticated, the profile query has completed, and getCallerUserProfile returns null. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useGetCallerUserProfile query hook following the authorization component's pattern for preventing profile setup modal flash. Include proper enabled and retry logic. Add a useSaveCallerUserProfile mutation hook that calls actor.saveCallerUserProfile and invalidates the 'currentUserProfile' query cache. Verify the authorization component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Rebrand the entire application with the 'LNT' identity and 'MakeItHappen.com' throughout the design",
+      "acceptanceCriteria": [
+        "The browser tab title shows 'LNT | MakeItHappen.com' or equivalent",
+        "The hero banner prominently displays 'LNT' as the brand name",
+        "The site header or nav shows 'LNT' and 'MakeItHappen.com'",
+        "No generic placeholder copy like 'Music Portfolio Page' remains visible",
+        "The dark, bold visual theme is preserved with LNT branding applied consistently across all pages"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the page title from 'Music Portfolio Page' to 'LNT | MakeItHappen.com'."
+        },
+        {
+          "path": "frontend/src/components/HeroBanner.tsx",
+          "operation": "modify",
+          "description": "Replace the generic 'Music Portfolio Page' title text with 'LNT' as the primary headline and 'MakeItHappen.com' as a subtitle or tagline. Preserve the existing dark theme, background image, gradient overlay, and gold decorative elements."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure global styling supports the LNT branding with the dark, bold, music-inspired theme. No structural changes needed, but verify all color tokens and typography remain consistent with the LNT brand identity."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement auto-refresh for the public music catalog page so new entries appear immediately without manual reload",
+      "acceptanceCriteria": [
+        "The music catalog page polls the backend for new entries at a short interval (e.g., every 10–15 seconds) or invalidates the query cache after an admin upload",
+        "A newly added entry appears on the public catalog page for visitors without requiring a full page reload",
+        "The polling or refresh mechanism does not cause visible flicker or disrupt the user's current scroll/filter state"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Update the useGetAllEntries hook to include a refetchInterval option set to 10000 milliseconds (10 seconds) to poll the backend for new entries automatically. Ensure the query configuration preserves cached data during refetch to avoid flicker."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add a navigation bar to the application with LNT branding, catalog link, admin link (authenticated only), and login/logout button",
+      "acceptanceCriteria": [
+        "A navigation bar is present at the top of every page",
+        "The LNT brand name is displayed prominently in the nav",
+        "A link to the public music catalog is always visible",
+        "An 'Admin' link appears in the nav only when the user is authenticated",
+        "A login button is shown when logged out; a logout button is shown when logged in",
+        "Clicking the Admin link navigates to /admin"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "create",
+          "description": "Create a navigation bar component as specified in REQ-6. This component satisfies the requirements for REQ-9 by displaying the LNT brand logo (from frontend/public/assets/generated/lnt-logo.dim_400x120.png), a 'Music' link visible to all, an 'Admin' link visible only when authenticated, and a login/logout button powered by Internet Identity. Use the authorization component's useInternetIdentity hook. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create a layout component as specified in REQ-6. This component wires the Navigation component into every page by wrapping the router outlet, satisfying REQ-9's requirement that the nav appear on all pages."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the Layout component into the router setup so that all routes render inside the layout with the navigation bar visible. This ensures the navigation bar appears on every page as required by REQ-9."
+        }
+      ]
+    }
+  ]
+}

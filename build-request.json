@@ -1,0 +1,106 @@
+{
+  "kind": "build_request",
+  "title": "Owner Admin Panel + LNT Branding for MakeItHappen.com",
+  "projectName": "MakeItHappen LNT",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "text": "Create an owner admin panel page (route: /admin) where the owner can add new music entries (with title, artist, album, cover image URL, release year, genre, and streaming platform links) and delete existing entries. Access to this page should be gated behind Internet Identity authentication — only the authenticated owner can see or use the admin controls.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Make me a page where I as the owner can upload and take off links that direct the user to a different app like Spotify or YouTube Etc"
+        ]
+      },
+      "acceptanceCriteria": [
+        "An /admin route exists and renders the admin panel page",
+        "The page is only accessible when the user is authenticated via Internet Identity",
+        "The admin can fill out a form to add a new music entry with title, artist, album, cover image URL, release year, optional genre, and one or more streaming platform links (platform name + URL)",
+        "Submitting the form calls the backend addEntry method and the new entry appears in the catalog immediately",
+        "Each existing entry in the admin panel has a delete/remove button that calls the backend deleteEntry method and removes the entry",
+        "Unauthenticated users visiting /admin are shown a login prompt and cannot see or modify entries"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Rebrand the entire application with the 'LNT' identity throughout the design. The site title shown in the browser tab, hero banner, header, and footer should read 'LNT' and 'MakeItHappen.com'. Update the hero banner headline, page title in index.html, and any display text that currently says 'Music Portfolio Page' to reflect the LNT brand. Keep the existing dark, bold, music-inspired visual theme but replace generic copy with LNT-specific language.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "make the page themed with the word 'LNT' name the page 'MakeItHappen.com'"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The browser tab title shows 'LNT | MakeItHappen.com' or equivalent",
+        "The hero banner prominently displays 'LNT' as the brand name",
+        "The site header or nav shows 'LNT' and 'MakeItHappen.com'",
+        "No generic placeholder copy like 'Music Portfolio Page' remains visible",
+        "The dark, bold visual theme is preserved with LNT branding applied consistently across all pages"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Ensure the public music catalog page auto-refreshes its data so that when the owner uploads a new song or content via the admin panel, visitors see the new entry appear immediately without needing to manually reload the page. Implement polling or query invalidation so the catalog stays up to date in real time.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "make it to where a new song that I release or new content they can see it instantly if I upload it to the page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The music catalog page polls the backend for new entries at a short interval (e.g., every 10–15 seconds) or invalidates the query cache after an admin upload",
+        "A newly added entry appears on the public catalog page for visitors without requiring a full page reload",
+        "The polling or refresh mechanism does not cause visible flicker or disrupt the user's current scroll/filter state"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Add a navigation bar to the application so visitors can navigate to the public music catalog and the owner can navigate to the admin panel. The nav should display the LNT brand logo/name on the left, a link to the catalog ('Music' or 'Catalog') visible to all users, and an 'Admin' link visible only when authenticated. Include a login/logout button powered by Internet Identity.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "make it to where I users can go on the page and see the links I uploaded"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A navigation bar is present at the top of every page",
+        "The LNT brand name is displayed prominently in the nav",
+        "A link to the public music catalog is always visible",
+        "An 'Admin' link appears in the nav only when the user is authenticated",
+        "A login button is shown when logged out; a logout button is shown when logged in",
+        "Clicking the Admin link navigates to /admin"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "All backend logic must remain in the single main actor file (backend/main.mo)",
+    "Use Internet Identity (already integrated) for owner authentication — no external auth providers",
+    "The existing dark, bold, music-inspired visual theme must be preserved"
+  ],
+  "nonGoals": [
+    "Multi-owner or role-based access control beyond a single authenticated owner",
+    "Real-time WebSocket or push-notification based updates",
+    "Direct file/audio upload to the backend — cover images are referenced by URL only",
+    "Changing the backend data model for MusicEntry (fields already support streaming links)"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Bold stylized 'LNT' wordmark logo on a transparent background, gold metallic lettering with a dark glow effect (lnt-logo.dim_400x120.png)"
+    ],
+    "edits": []
+  }
+}

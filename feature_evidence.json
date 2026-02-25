@@ -1,0 +1,89 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-an-owner-admin-panel-page-route-admin-where-the-owner-can-add-new-music-entries-with-title-artist-album-cover-image-url-release-year-genre-and-streaming-platform-links-and-delete-existing-entries-access-to-this-page-should-be-gated-behind-internet-identity-authentication-only-the-authenticated-owner-can-see-or-use-the-admin-controls",
+      "featureTitle": "Create an owner admin panel page (route: /admin) where the owner can add new music entries (with title, artist, album, cover image URL, release year, genre, and streaming platform links) and delete existing entries. Access to this page should be gated behind Internet Identity authentication — only the authenticated owner can see or use the admin controls.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/AdminPanel.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-rebrand-the-entire-application-with-the-lnt-identity-throughout-the-design-the-site-title-shown-in-the-browser-tab-hero-banner-header-and-footer-should-read-lnt-and-makeithappen-com-update-the-hero-banner-headline-page-title-in-index-html-and-any-display-text-that-currently-says-music-portfolio-page-to-reflect-the-lnt-brand-keep-the-existing-dark-bold-music-inspired-visual-theme-but-replace-generic-copy-with-lnt-specific-language",
+      "featureTitle": "Rebrand the entire application with the 'LNT' identity throughout the design. The site title shown in the browser tab, hero banner, header, and footer should read 'LNT' and 'MakeItHappen.com'. Update the hero banner headline, page title in index.html, and any display text that currently says 'Music Portfolio Page' to reflect the LNT brand. Keep the existing dark, bold, music-inspired visual theme but replace generic copy with LNT-specific language.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/HeroBanner.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-public-music-catalog-page-auto-refreshes-its-data-so-that-when-the-owner-uploads-a-new-song-or-content-via-the-admin-panel-visitors-see-the-new-entry-appear-immediately-without-needing-to-manually-reload-the-page-implement-polling-or-query-invalidation-so-the-catalog-stays-up-to-date-in-real-time",
+      "featureTitle": "Ensure the public music catalog page auto-refreshes its data so that when the owner uploads a new song or content via the admin panel, visitors see the new entry appear immediately without needing to manually reload the page. Implement polling or query invalidation so the catalog stays up to date in real time.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-navigation-bar-to-the-application-so-visitors-can-navigate-to-the-public-music-catalog-and-the-owner-can-navigate-to-the-admin-panel-the-nav-should-display-the-lnt-brand-logo-name-on-the-left-a-link-to-the-catalog-music-or-catalog-visible-to-all-users-and-an-admin-link-visible-only-when-authenticated-include-a-login-logout-button-powered-by-internet-identity",
+      "featureTitle": "Add a navigation bar to the application so visitors can navigate to the public music catalog and the owner can navigate to the admin panel. The nav should display the LNT brand logo/name on the left, a link to the catalog ('Music' or 'Catalog') visible to all users, and an 'Admin' link visible only when authenticated. Include a login/logout button powered by Internet Identity.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
